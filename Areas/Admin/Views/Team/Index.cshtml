@@ -1,0 +1,55 @@
+﻿@model List<Team>
+@{
+    int count = 1;
+}
+
+
+
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="d-flex justify-content-end ">
+            <a asp-area="Admin" asp-controller="Team" asp-action="Create" class="btn btn-outline-light">Create</a>
+        </div>
+        <div class="col-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Responsive Table</h6>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Possition</th>
+                                <th scope="col">Photo</th>
+                                <th scope="col">Settings</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th>@count</th>
+                                    <td>@item.Name</td>
+                                    <td>@item.Possition</td>
+                                    <td><img src="~/assets/img/team/@item.ImagePath"  height="130"/></td>
+                                    <td>
+                                        <a class="btn btn-outline-success" asp-area="Admin" asp-controller="Team" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                        <a class="btn btn-outline-danger" asp-area="Admin" asp-controller="Team" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    </td>
+                                  
+
+                                </tr>
+                                count++;
+                            }
+                         
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
